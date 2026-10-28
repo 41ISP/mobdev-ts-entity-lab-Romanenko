@@ -1,4 +1,4 @@
-import { EntityCard } from "./components/HoimodCard"
+import { HoimodCard } from "./components/HoimodCard"
 import { EntityForm } from "./components/HoimodForm"
 import "./App.css"
 
@@ -19,7 +19,7 @@ export default function App() {
                 <p className="hint">Загрузка…</p>
                 <p className="hint">Добавьте сущность</p>
                 <div className="grid">
-                    <EntityCard />
+                    <HoimodCard />
                 </div>
             </main>
         </div>

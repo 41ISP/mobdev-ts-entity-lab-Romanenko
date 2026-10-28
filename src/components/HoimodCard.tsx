@@ -1,4 +1,17 @@
-export function EntityCard() {
+import { API_URL } from "../api"
+import {  type Ihoimods } from "../types"
+
+interface IHoimodCard extends Ihoimods {}
+export function HoimodCard() {
+//     cover,
+//     description,
+//     rating,
+//     price,
+//     title,
+//     releaseDate,
+//     platforms,
+//     genre
+// }:Ihoimods ) {  
     return (
         <article className="card">
             <div className="card__cover">

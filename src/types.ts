@@ -1,23 +1,24 @@
-export interface Root {
-  data: IDaum[]
-  meta: IMeta
+export interface Root<T> {
+  data: T
+  meta?: IMeta
 }
 
-export interface IDaum {
+export interface Ihoimods {
   id: number
   documentId: string
   createdAt: string
   updatedAt: string
   publishedAt: string
   title: string
-  description: string
+  description?: string
   size: number
   author: string
   UploadDate: string
   followers: string
-  tags: string[]
+  tags: Tag[]
   image: Image
 }
+
 
 export interface Image {
   id: number
@@ -43,12 +44,13 @@ export interface Image {
 }
 
 export interface IFormats {
-  small: ISmall
-  medium: IMedium
-  thumbnail: IThumbnail
+  small: IMedia
+  medium: IMedia
+  thumbnail: IMedia
 }
 
-export interface ISmall {
+export interface IMedia {
+    id: number
   ext: string
   url: string
   hash: string
@@ -59,32 +61,7 @@ export interface ISmall {
   width: number
   height: number
   sizeInBytes: number
-}
-
-export interface IMedium {
-  ext: string
-  url: string
-  hash: string
-  mime: string
-  name: string
-  path: any
-  size: number
-  width: number
-  height: number
-  sizeInBytes: number
-}
-
-export interface IThumbnail {
-  ext: string
-  url: string
-  hash: string
-  mime: string
-  name: string
-  path: any
-  size: number
-  width: number
-  height: number
-  sizeInBytes: number
+  alternativeText?: string
 }
 
 export interface IMeta {
@@ -97,3 +74,16 @@ export interface IPagination {
   pageCount: number
   total: number
 }
+export const TAGS = ["AlternativeHistory", "Events", "Gameplay", "NationalFocuses"] as const
+export type Tag = (typeof TAGS)[number]
+
+export const TAG_LABELS: Record<Tag, string> = {
+    AlternativeHistory: "Альтернативная История",
+    Events: "События",
+    Gameplay: "Геймплей",
+    NationalFocuses:"Национальные Фокусы"
+}
+export type IDaumInput = Omit<
+    Ihoimods,
+    "id" | "documentId" | "createdAt" | "updatedAt" | "publishedAt" | "image"
+>
